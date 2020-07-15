@@ -1,3 +1,44 @@
+type T = {
+  /**
+   * The number of years.
+   */
+  period: number,
+  /**
+   * The sum to be loaned.
+   */
+  loan: number,
+  /**
+   * One-time additional costs.
+   */
+  additionalCosts: number,
+  /**
+   * The yearly interest rate.
+   */
+  annualInterestRate: number,
+  /**
+   * Any sum you wish to pay extra each month.
+   */
+  additionalMonthlyPayment: number,
+  /**
+   * Any extra payments you wish to pay.
+   */
+  extraPayments: {
+    /**
+     * The sum you want to pay extra each month.
+     */
+    value: number
+    /**
+     * The maximum number of months in which you want to pay extra, e.g `2` = a maximum of 2 extra payments, in total.
+     * Pass `0` for no limit, meaning every month for the whole period.
+     */
+    limit: number
+    /**
+     * The frequency of the extra payments, e.g `2` = one extra payment every other month.
+     */
+    frequency: number
+  },
+}
+
 /*
  * type - when the payments are due:
  *        0: end of the period, e.g. end of month (default)
@@ -31,7 +72,7 @@ const computeLoan = ({
   annualInterestRate,
   additionalMonthlyPayment,
   extraPayments,
-}) => {
+}: T) => {
   const monthlyInterestRate = (annualInterestRate * 0.01) / 12
   const baseMonthlyPayment = PMT({
     monthlyInterestRate,
@@ -109,7 +150,6 @@ const v = computeLoan({
   },
 })
 
-v
+console.log(v)
 
-// Make it a module, to not be global
-export {}
+export default computeLoan
