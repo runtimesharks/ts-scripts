@@ -33,7 +33,13 @@ const compound = ({ value, interest, years, monthly }: T) => {
 		})
 
 	return {
+		/**
+		 * The total investment plus interest.
+		 */
 		total,
+		/**
+		 * The total investment.
+		 */
 		invested,
 	}
 }

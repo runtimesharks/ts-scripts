@@ -16,7 +16,7 @@ type T = {
    */
   annualInterestRate: number,
   /**
-   * Any sum you wish to pay extra each month.
+   * Any sum you wish to pay each month on top of the required monthly payment.
    */
   additionalMonthlyPayment: number,
   /**
@@ -124,15 +124,45 @@ const computeLoan = ({
   const repayDurationDifference = period - durationOfRepay
 
   return {
+    /**
+     * The base monthly payment.
+     */
     baseMonthlyPayment,
+    /**
+     * The monthly payment, including additional payments.
+     */
     actualMonthlyPayment,
+    /**
+     * The total monthly payment, including anything additional and extra.
+     */
     actualMonthlyPaymentWithExtra,
+    /**
+     * The total sum that will be paid.
+     */
     total,
+    /**
+     * The total interest that will be paid.
+     */
     totalInterest,
+    /**
+     * The total interest that will be paid, as a percentage of the loan.
+     */
     percentageOfOverpay,
+    /**
+     * The duration of the loan.
+     */
     durationOfRepay,
+    /**
+     * The number of months where any additional or extra payment was made.
+     */
     numberOfPaidExtraPayments,
+    /**
+     * The total sum of any additional or extra payments that were made.
+     */
     valueOfPaidExtraPayments,
+    /**
+     * How many months sooner will the loan be paid due to additional or extra payments.
+     */
     repayDurationDifference,
   }
 }
