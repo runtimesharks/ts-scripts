@@ -48,7 +48,7 @@ const monthly = compound({
 	value: 500,
 	interest: 0.073,
 	years: 30,
-	monthly: false,
+	monthly: true,
 })
 
 console.log(monthly)
@@ -57,7 +57,7 @@ const yearly = compound({
 	value: 500,
 	interest: 0.073,
 	years: 30,
-	monthly: true,
+	monthly: false,
 })
 
 console.log(yearly)
